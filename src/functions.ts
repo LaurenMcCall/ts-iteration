@@ -29,7 +29,7 @@
 
 function yelling(words: string[]): string[] {
   // Replace the code below with your own code
-  return []
+  return words.map(word => word.toUpperCase())
 }
 
 /**
@@ -44,7 +44,7 @@ function yelling(words: string[]): string[] {
 
 function doubleTrouble(numbers: number[]): number[] {
   // Replace the code below with your own code
-  return []
+  return numbers.map(num => num * 2)
 }
 
 /*
@@ -58,7 +58,7 @@ function doubleTrouble(numbers: number[]): number[] {
 
 function stringyIndexes(strings: string[]): string[] {
   // Replace the code below with your own code
-  return []
+  return strings.map((string, index) => `${string} is at index ${index}`)
 }
 
 /*
@@ -71,7 +71,7 @@ function stringyIndexes(strings: string[]): string[] {
 
 function onlyTheEvenSurvive(numbers: number[]): number[] {
   // Replace the code below with your own code
-  return []
+  return numbers.filter(number => number % 2 === 0)
 }
 
 /*
@@ -84,7 +84,7 @@ function onlyTheEvenSurvive(numbers: number[]): number[] {
 
 function onlyTheEvenIndexedSurvive(numbers: number[]): number[] {
   // Replace the code below with your own code
-  return []
+  return numbers.filter((number, index) => index % 2 === 0)
 }
 
 /*
@@ -109,9 +109,18 @@ type Movie = {
   year: number
   score: number
 }
-function bestMoviesOfTheYear(movieObjectArray: Movie[], year: number): string[] {
+function bestMoviesOfTheYear(
+  movieObjectArray: Movie[],
+  year: number
+): string[] {
   // Replace the code below with your own code
-  return []
+  return movieObjectArray
+    .filter(movie => movie.year === year && movie.score > 90)
+    .map(movie => movie.name)
+
+  // return movieObjectArray.filter(
+  //   movies => movies.score > 90 && movies.year === year
+  // )
 }
 
 /*
@@ -125,7 +134,7 @@ function bestMoviesOfTheYear(movieObjectArray: Movie[], year: number): string[] 
 
 function everyoneIsOdd(numbers: number[]): boolean {
   // Replace the code below with your own code
-  return false
+  return numbers.every(number => number % 2 !== 0)
 }
 
 /*
@@ -137,9 +146,11 @@ function everyoneIsOdd(numbers: number[]): boolean {
  *
  */
 
+// QUESTION — this one is poorly written
 function findTheNeedle(strings: string[]): string {
   // Replace the code below with your own code
-  return ''
+  return strings.find(string => string.match('needle')) || ' '
+  // return `there was a needle at`
 }
 
 /*
@@ -153,7 +164,7 @@ function findTheNeedle(strings: string[]): string {
 
 function findTheNeedleIndex(strings: string[]): number {
   // Replace the code below with your own code
-  return 42
+  return strings.findIndex(string => string.match('needle'))
 }
 
 /*
@@ -167,7 +178,7 @@ function findTheNeedleIndex(strings: string[]): number {
 
 function someoneToLove(strings: string[]): boolean {
   // Replace the code below with your own code
-  return false
+  return strings.some(s => s.length === 4)
 }
 
 /*
@@ -205,10 +216,13 @@ function someoneToLove(strings: string[]): boolean {
 
 type Hobbies = Record<string, { title: string; description: string }>
 function objectKeys(objectOfHobbies: Hobbies): string[] {
+  console.log(Object.entries(objectOfHobbies))
   // Replace the code below with your own code
-  return []
+  const answer = Object.entries(objectOfHobbies).map(
+    ([key, value]) => `${key} - ${value.title}`
+  )
+  return answer
 }
-
 /**
  *
  *                            STOP
